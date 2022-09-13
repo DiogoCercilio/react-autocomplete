@@ -1,25 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import AutoComplete from './component/AutoComplete';
+import ResultItem from './component/ResultItem';
+import { ApiResultItem } from './models/ApiResult';
+import { UserService } from './service/UserService';
 
 function App() {
+  const [data, setData] = useState<ApiResultItem[]>([])
+  const [choosedItem, setChoosedItem] = useState<ApiResultItem>()
+
+  useEffect(() => {
+    UserService.getAll().then(res => setData(res))
+  }, [])
+
+  const onChooseItemHandler = (item: ApiResultItem) => {
+    setChoosedItem(item)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="app-section">
+      <AutoComplete
+        data={data}
+        onChooseItem={onChooseItemHandler}
+        onClickHandler={()=> setChoosedItem(undefined)}
+      />
+      <ResultItem item={choosedItem} />
+    </section>
   );
 }
 

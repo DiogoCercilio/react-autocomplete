@@ -1,0 +1,57 @@
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    color: #fff;
+    background-color: #333;
+    line-height: 24px;
+    padding: 8px 16px;
+    text-transform: capitalize;
+    border-bottom: 1px solid #111;
+    box-shadow: 0 1px 0 rgb(161 152 135 / 30%), 0 1px 0 #444 inset;
+}
+
+li:nth-child(odd) {
+    background-color: #3a3a3a;
+}
+
+li:last-child {
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0px 4px 5px -1px rgb(0 0 0 / 20%);
+}
+
+li.active {
+    background-color: #444;
+}
+
+span {
+    color: #ffcf55;
+    text-transform: capitalize;
+}
+
+input {
+    box-shadow: 1px 1px 15px -5px rgb(0 0 0 / 90%);
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 16px;
+    display: block;
+    border-radius: 4px;
+    border: none;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.absolute {
+    position: absolute
+}
+
+.relative {
+    position: relative
+}
+
+.w-full {
+    width: 100%;
+}
